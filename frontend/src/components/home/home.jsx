@@ -26,11 +26,11 @@ class Home extends Component {
   }
 
   componentDidMount = async () => {
-    console.log(this.props);
+    // console.log(this.props);
     // var respPledges = await fetch("http://localhost:5000/pledges");
     var username = this.props.location.state.username;
     await this.setState({ username: username });
-    console.log(username);
+    // console.log(username);
     var respUserInfo = await fetch(`http://localhost:5000/user/${username}`);
     var respPercentile = await fetch(
       `http://localhost:5000/percentile/${username}`

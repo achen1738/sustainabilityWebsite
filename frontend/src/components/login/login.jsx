@@ -41,7 +41,7 @@ class Login extends Component {
           }
         );
         const accountMade = await res.json();
-        console.log(accountMade);
+        // console.log(accountMade);
         if (accountMade) {
           this.setState({ route: true, signup: true });
         } else {
