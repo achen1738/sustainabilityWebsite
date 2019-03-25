@@ -30,6 +30,7 @@ class Home extends Component {
     // var respPledges = await fetch("http://localhost:5000/pledges");
     var username = this.props.location.state.username;
     await this.setState({ username: username });
+    console.log(username);
     var respUserInfo = await fetch(`http://localhost:5000/user/${username}`);
     var respPercentile = await fetch(
       `http://localhost:5000/percentile/${username}`

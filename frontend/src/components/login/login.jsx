@@ -183,7 +183,7 @@ class Login extends Component {
               state: {
                 username: this.state.signup
                   ? this.state.signUpUsername
-                  : this.state.loginPassword
+                  : this.state.loginUsername
               }
             }}
           />
