@@ -49,3 +49,7 @@ button:focus {
   justify-content: center;
   align-items: center;
 }
+
+* {
+  box-sizing: border-box;
+}

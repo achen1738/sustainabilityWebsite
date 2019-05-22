@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #fafafa;
+  width: 50%;
+  margin: 5vh 3vw;
+  border: 1px solid #0066ff;
+  border-radius: 15px;
+}
+
+.buttonAesthetic {
+  text-align: center;
+  color: white;
+  min-width: 22vw;
+  border-radius: 20px;
+  padding: 7px;
+  font-weight: bolder;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.buttonAesthetic:nth-child(2) {
+  margin-bottom: 1vh;
+}
+
+.filledButton {
+  background-color: #0066ff;
+  color: white;
+}
+
+.filledButton:hover {
+  background-color: #004dc0;
+}
+
+.emptyButton {
+  border: 2px solid #0066ff;
+  color: #0066ff;
+}
+
+.emptyButton:hover {
+  background-color: #c2daff;
+}
+
+.darkModeContainer {
+  background-color: #fafafa;
+  position: absolute;
+  z-index: 1;
+  top: -1.5vh;
+  left: calc(50% - 5vw);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10vw;
+  height: 3vh;
+}
+
+.darkModeContainer > span {
+  background-color: red;
+}

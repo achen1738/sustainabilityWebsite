@@ -4,6 +4,8 @@ import React, { Component } from "react";
 import styles from "./login.module.css";
 import Avacado2 from "./YUM2.png";
 import { Redirect } from "react-router-dom";
+import LeftLogin from "./leftLogin";
+import RightLogin from "./rightLogin";
 
 class Login extends Component {
   constructor(props) {
@@ -188,38 +190,8 @@ class Login extends Component {
             }}
           />
         ) : null}
-        <div className={styles.left}>
-          <img src={Avacado2} alt="asdfasdf" />
-        </div>
-        <div className={styles.right}>
-          <div className={styles.loginForm}>
-            <input
-              type="text"
-              id="uname"
-              name="username"
-              placeholder="username..."
-              onChange={e => this.updateLoginUsername(e)}
-            />
-            <input
-              type="password"
-              id="pass"
-              name="password"
-              placeholder="password..."
-              onChange={e => this.updateLoginPassword(e)}
-            />
-            <div onClick={this.handleLogin} className={styles.loginBtn}>
-              Log in
-            </div>
-          </div>
-          {this.state.loginError ? loginError : null}
-          <h2>s u s t a i n a b i l i t y</h2>
-          <div className={this.state.formVisible ? styles.signupWrapper : ""}>
-            {signupForm}
-            <div className={styles.signupBtn} onClick={this.handleSignup}>
-              Sign Up
-            </div>
-          </div>
-        </div>
+        <LeftLogin />
+        <RightLogin />
       </div>
     );
   }
