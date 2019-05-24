@@ -1,5 +1,5 @@
 import React from "react";
-import Avacado2 from "./YUM2.png";
+import Avacado2 from "./YUM.png";
 
 const LeftLogin = () => {
   const container = {

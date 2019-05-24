@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import Button from "react-bootstrap/Button";
 // import FormControl from "react-bootstrap/FormControl";
 import styles from "./login.module.css";
-import Avacado2 from "./YUM2.png";
+import Avacado2 from "./YUM.png";
 import { Redirect } from "react-router-dom";
 import LeftLogin from "./leftLogin";
 import RightLogin from "./rightLogin";

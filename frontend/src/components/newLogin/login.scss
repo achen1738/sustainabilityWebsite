@@ -1,0 +1,229 @@
+@import "../../styles/colors";
+@import "../../styles/position";
+
+$blue: #0066ff;
+$peach1: #ffa6a6;
+.login {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: rgba(30, 30, 30, 0.3);
+  @extend %flex-center;
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+  }
+
+  &__background > img {
+    width: 100%;
+    height: 100%;
+    // object-fit: cover;
+  }
+
+  &__portal {
+    color: $white1;
+    margin-bottom: 5vh;
+
+    & > h4 {
+      text-shadow: 0 1px 2px black;
+    }
+  }
+
+  &__button {
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+    padding: 0.75vh 5vw;
+    border-radius: 0.5vh;
+    background: linear-gradient(to right, $blue 50%, $white1 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.5s ease-out;
+    border: 1px solid $white1;
+    @extend %flex-center;
+
+    &_filled {
+      color: black;
+    }
+
+    &_filled:hover {
+      color: $white1;
+    }
+
+    &_hollow {
+      background: linear-gradient(to right, $blue 50%, transparent 50%);
+      background-size: 200% 100%;
+      background-position: right bottom;
+    }
+
+    &:hover {
+      background-position: left bottom;
+    }
+
+    &:last-child {
+      margin-top: 1.5vh;
+    }
+  }
+}
+
+.pledges {
+  @extend %flex-center;
+  flex-direction: column;
+  color: $white1;
+
+  & > h4 {
+    text-shadow: 0 1px 2px black;
+  }
+  &__options {
+    display: grid;
+    min-width: 800px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 1.5vw;
+  }
+
+  &__option {
+    height: 50vh;
+    border-radius: 1vh;
+    box-shadow: 0px 3px 10px 1px #000000af;
+    overflow: hidden;
+    // background-color: rgba(30, 30, 30, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &__background-image {
+    position: absolute;
+    height: 100%;
+    // z-index: -1;
+
+    & > img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__background-tint {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(30, 30, 30, 0.3);
+    }
+  }
+
+  &__description {
+    position: relative;
+    z-index: 2;
+    background-color: white;
+    color: black;
+    padding: 2vh 1vw;
+    @extend %flex-center;
+
+    & > span {
+      font-size: 14px;
+    }
+  }
+}
+
+.username-form {
+  color: $white1;
+  @extend %flex-center;
+  flex-direction: column;
+  &__input {
+    border: 2px solid $white1;
+    padding: 1vh 1vw;
+    color: $white1;
+    border-radius: 25px;
+
+    @extend %flex-center;
+
+    & > form > input {
+      border: none;
+      background-image: none;
+      background-color: transparent;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
+
+    & > form > input:focus {
+      outline: 0;
+
+      /* no fill */
+      border-bottom: 1px solid $white1;
+    }
+
+    & > form > input {
+      margin: 0 1vw;
+      color: $white1;
+    }
+  }
+
+  &__description {
+    margin-bottom: 0.5vh;
+    text-shadow: 0 1px 2px black;
+
+    & > span {
+      padding-bottom: 0.5vh;
+      padding-right: 1.5vw;
+      //   border-bottom: 1px solid white;
+    }
+  }
+}
+
+.check-icon {
+  position: relative;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  padding: 1vh 1vw;
+  &_right {
+    flex-direction: row-reverse;
+  }
+
+  &_center {
+    justify-content: center;
+  }
+}
+
+.create-button {
+  padding: 1vh 1vw;
+  border-radius: 0.5vh;
+  border: 2px solid $white1;
+  margin-top: 2vh;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  @extend %flex-center;
+
+  &:hover {
+    background-color: $white1;
+    color: black;
+  }
+}
+
+.icon {
+  margin: 0 0.5vw;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &_peach1 {
+    color: $peach1;
+    &:hover {
+      color: darken($peach1, 10%);
+    }
+  }
+}
+
+.description {
+  display: flex;
+  align-items: center;
+}

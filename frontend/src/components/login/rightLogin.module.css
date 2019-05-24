@@ -22,7 +22,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.buttonAesthetic:nth-child(2) {
+.buttonAesthetic:nth-child(3) {
   margin-bottom: 1vh;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .emptyButton {
-  border: 2px solid #0066ff;
+  border: 1px solid #0066ff;
   color: #0066ff;
 }
 
@@ -59,4 +59,35 @@
 
 .darkModeContainer > span {
   background-color: red;
+}
+
+.toggleButton {
+  padding: 1vh 1vw;
+  background-color: #aaaaaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fafafa;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.toggleButton:first-child {
+  border-radius: 0.5vh 0 0 0.5vh;
+}
+
+.toggleButton:last-child {
+  border-radius: 0 0.5vh 0.5vh 0;
+}
+
+.toggleButton:hover {
+  background-color: #8a8a8a;
+}
+
+.activeToggle {
+  background-color: #0066ff;
+}
+
+.activeToggle:hover {
+  background-color: #0050c7;
 }
