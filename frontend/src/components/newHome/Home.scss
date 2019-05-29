@@ -1,0 +1,210 @@
+@import "../../styles/colors";
+@import "../../styles/position";
+
+.home {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: rgba(30, 30, 30, 0.3);
+  @extend %flex-center;
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+  }
+
+  &__background > img {
+    width: 100%;
+    height: 100%;
+    // object-fit: cover;
+  }
+}
+
+.dashboard {
+  display: grid;
+  width: 70vw;
+  height: 70vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2vw;
+}
+
+.checklist {
+  border: 4px solid $white1;
+  border-radius: 2vh;
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  overflow: hidden;
+  & > div {
+    width: 100%;
+  }
+
+  //   & > div {
+  //       bor
+  //   }
+
+  &__content {
+    height: 89%;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 0.5vw;
+    & > div {
+      width: inherit;
+    }
+  }
+
+  &__tabs {
+    color: $white1;
+    width: 100%;
+    display: flex;
+    margin-bottom: 1vh;
+    // justify-content: space-around;
+    // border-bottom: 1px solid white;
+
+    // display: grid;
+    // grid-template-columns: 15% 15% 35% 35%;
+  }
+
+  &__tab {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid $white1;
+    padding: 0 1vw 0.5vh;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    text-shadow: 0 1px 2px black;
+
+    &:hover {
+      border-width: 2px;
+      border-color: #afffc1;
+      color: #afffc1;
+    }
+
+    &-active {
+      border-width: 2px;
+      font-weight: bold;
+      border-color: #afffc1;
+      color: #afffc1;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    width: inherit;
+    padding: 1.25vh 0.5vw;
+    color: $white1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.6);
+
+    &:not(:first-child) {
+      margin-top: 1vh;
+    }
+
+    & > span {
+      font-size: 14px;
+      line-height: 0;
+    }
+    &_todo {
+      background-color: $blue;
+    }
+
+    &_completed {
+      background-color: $green2;
+    }
+
+    &_deleted {
+      background-color: $red1;
+    }
+
+    &-input {
+      line-height: 0;
+      color: $white1;
+      position: relative;
+      //   border-bottom: 1px solid transparent;
+      width: 85%;
+      &:focus {
+        border-bottom: 1px solid $white1;
+      }
+
+      &_deleted {
+        text-decoration: line-through;
+      }
+    }
+
+    &-icon_right {
+      margin-right: 0.5vw;
+      font-size: 18px;
+    }
+
+    &-icon_left {
+      margin-left: 0.5vw;
+      font-size: 18px;
+    }
+  }
+
+  &__input {
+    height: 11%;
+    border-top: 4px solid $white1;
+    color: $white1;
+    display: flex;
+    align-items: center;
+
+    & > form {
+      height: 100%;
+      padding: 1vh 0 1vh 1vw;
+      width: calc(100% - 32px - 1vw);
+    }
+
+    & > form > input {
+      height: inherit;
+      width: 100%;
+      border-bottom: 1px solid $white1;
+      color: $white1;
+      text-shadow: 0 1px 2px black;
+
+      &::placeholder {
+        color: $white2;
+      }
+    }
+
+    &-icon {
+      width: 32px;
+      height: 32px;
+      margin-right: 1vw;
+      margin-left: 0.5vw;
+    }
+  }
+}
+
+.strikethrough {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  border: 0.5px solid $white1;
+}
+
+.groups {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 3vh;
+
+  &__group {
+    background-color: purple;
+  }
+}
