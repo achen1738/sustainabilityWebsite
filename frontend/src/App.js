@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
+// eslint-disable-next-line
 import Login from "./components/newLogin/login";
-import Home from "./components/home/home";
+import Home from "./components/newHome/Home";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
@@ -10,7 +11,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={loginPage} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/dashboard" component={Home} />
             {/* <Route component={errorPage}/> */}
           </Switch>
@@ -19,7 +20,5 @@ class App extends Component {
     );
   }
 }
-
-const loginPage = match => <Login />;
 
 export default App;

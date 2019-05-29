@@ -1,8 +1,6 @@
 @import "../../styles/colors";
 @import "../../styles/position";
 
-$blue: #00a5ff;
-$peach1: #ffa6a6;
 .login {
   width: 100vw;
   height: 100vh;
@@ -156,8 +154,6 @@ $peach1: #ffa6a6;
     }
 
     & > form > input:focus {
-      outline: 0;
-
       /* no fill */
       border-bottom: 1px solid $white1;
     }
