@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { createStore } from "react-redux";
 import "./Home.scss";
 import {
   FiPlusCircle,
@@ -14,7 +13,24 @@ class Checklist extends Component {
     super(props);
     this.state = {
       tabs: ["All", "Todo", "Completed", "Deleted"],
-      activeTab: 1
+      activeTab: 1,
+      items: [
+        {
+          text: "Todo",
+          currentStatus: 1,
+          previousStatus: -1
+        },
+        {
+          text: "Completed",
+          currentStatus: 2,
+          previousStatus: -1
+        },
+        {
+          text: "Deleted",
+          currentStatus: 3,
+          previousStatus: 1
+        }
+      ]
     };
 
     this.textInput = React.createRef();
@@ -56,7 +72,7 @@ class Checklist extends Component {
   renderItems = () => {
     return (
       <div className="checklist__items">
-        {this.props.items.map((item, index) => {
+        {this.state.items.map((item, index) => {
           const status = item.currentStatus;
           const filter = this.state.activeTab;
           if (status === filter || filter === 0) {

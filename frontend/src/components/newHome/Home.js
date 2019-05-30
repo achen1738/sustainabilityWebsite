@@ -11,24 +11,22 @@ class Home extends Component {
     // this.textInput = React.createRef();
 
     this.state = {
-      items: [
-        {
-          text: "Todo",
-          currentStatus: 1,
-          previousStatus: -1
-        },
-        {
-          text: "Completed",
-          currentStatus: 2,
-          previousStatus: -1
-        },
-        {
-          text: "Deleted",
-          currentStatus: 3,
-          previousStatus: 1
-        }
-      ]
+      pledgeText: [
+        "Plant-based Meals",
+        "Alternative Transportation",
+        "Replacing Disposables"
+      ],
+      pledges: [],
+      pledgeNumber: -1
     };
+  }
+
+  async componentDidMount() {
+    let pledgeNumber = this.props.pledgeNumber;
+    pledgeNumber = 0;
+    var respPledgeInfo = await fetch(`http://localhost:5000/pledges`);
+    var pledgeInfo = await respPledgeInfo.json();
+    this.setState({ pledgeNumber: pledgeNumber, pledges: pledgeInfo });
   }
 
   setItems = newItems => {
@@ -60,6 +58,31 @@ class Home extends Component {
     this.setState({ text: newText });
   };
 
+  renderGroups = () => {
+    const pledgeNumber = this.state.pledgeNumber;
+    var coolColor = true;
+    return [0, 1, 2].map((group, index) => {
+      if (pledgeNumber !== -1 && pledgeNumber !== index) {
+        let gradient;
+        let text = this.state.pledgeText[index];
+        if (coolColor) {
+          gradient = "cool-gradient";
+          coolColor = !coolColor;
+        } else gradient = "warm-gradient";
+
+        return (
+          <Group
+            gradient={gradient}
+            key={index}
+            pledgeNumber={index}
+            pledgeText={text}
+          />
+        );
+      }
+      return null;
+    });
+  };
+
   render() {
     return (
       <div className="home">
@@ -68,12 +91,8 @@ class Home extends Component {
         </div>
         <div className="dashboard">
           <div className="user">sad</div>
-          <div className="groups">
-            <Group pledge={"very"} />
-            <Group pledge={"sad"} />
-          </div>
+          <div className="groups">{this.renderGroups()}</div>
           <Checklist
-            items={this.state.items}
             setItemStatus={this.setItemStatus}
             setDeleted={this.setDeleted}
             setItemText={this.setItemText}
