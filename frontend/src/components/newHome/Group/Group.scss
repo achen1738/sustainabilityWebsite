@@ -1,27 +1,39 @@
-@import "../../styles/colors";
-@import "../../styles/position";
+@import "../../../styles/colors";
+@import "../../../styles/position";
 
 .circle {
   border-radius: 50%;
-  width: 95px;
-  height: 95px;
+  width: 105px;
+  height: 105px;
   z-index: 3;
   position: absolute;
   top: calc(-96px / 2);
   left: calc(-96px / 2);
   border: 4px solid $white1;
-  transition: background 0.5s, width 0.5s 0.4s, height 0.5s 0.4s,
-    border-color 0.5s 0.4s, transform 0.5s 0.4s;
+  transition: background 0.3s, width 0.3s 0.2s, height 0.3s 0.2s,
+    border-color 0.3s, transform 0.3s 0.2s;
   transition-timing-function: ease-in;
 
-  // &:hover {
-  z-index: 4;
-  width: 500px;
-  height: 500px;
-  transform: translate(calc(-250px + 48px), calc(-250px + 48px));
-  border-color: transparent;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
-  // }
+  &_expanded {
+    z-index: 4;
+    width: 520px;
+    height: 520px;
+    transform: translate(calc(-250px + 48px), calc(-250px + 48px));
+    border-color: transparent;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  }
+
+  &_cool-hover {
+    &:hover {
+      color: #0c7bb6;
+    }
+  }
+
+  &_warm-hover {
+    &:hover {
+      color: #ff592f;
+    }
+  }
 }
 
 .cool-gradient {
@@ -121,7 +133,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+
+    // transition: all 0.2s ease-in 1s;
   }
 
   &__options {
@@ -130,21 +143,85 @@
     flex: 1 1 auto;
 
     display: flex;
+    padding: 1.5vh 0;
+
+    & > span {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__option {
+    background-color: $white1;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+
+    position: relative;
+    z-index: 5;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+
+    line-height: 0;
+    @extend %flex-center;
+
+    & > span {
+      position: absolute;
+      z-index: 5;
+      color: $white1;
+      width: 150px;
+      left: 3em;
+      text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &__information {
+    display: flex;
+    position: relative;
+    z-index: 6;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 
-    padding: 2.5vh 0;
+    & > div {
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: space-between;
+    }
+
+    &-icons {
+      align-items: center;
+      width: 65px;
+      height: inherit;
+    }
+
+    &-desc {
+      align-items: flex-start;
+      flex: 1 1 auto;
+      color: $white1;
+    }
   }
 
-  &__option {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    background-color: $white1;
-    line-height: 0;
+  .example-enter {
+    opacity: 0.01;
+  }
 
-    @extend %flex-center;
+  .example-enter.example-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in 200ms;
+  }
+
+  .example-leave {
+    opacity: 1;
+  }
+
+  .example-leave.example-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in 200ms;
   }
 
   &__icon {
@@ -156,11 +233,18 @@
     background-color: $white1;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     transition: all 0.2s ease-in-out;
+    position: relative;
     cursor: pointer;
     @extend %flex-center;
 
-    &:hover {
-      color: darken($peach1, 20%);
+    & > span {
+      color: #fafafa;
+      position: absolute;
+      z-index: 5;
+      font-size: 16px;
+      width: 200px;
+      left: 3.5em;
+      text-shadow: 0 1px rgba(0, 0, 0, 0.6);
     }
   }
 
@@ -234,4 +318,9 @@
 
 .pledge {
   width: 65px;
+}
+
+.hide {
+  transition: all 0.2s ease-in 1s;
+  @extend %hide-overflow;
 }

@@ -3,7 +3,9 @@ import Beach from "../../images/beach.jpg";
 
 import "./Home.scss";
 import Checklist from "./Checklist";
-import Group from "./Group";
+import Group from "./Group/Group";
+import PledgeInfo from "../../server/pledgeInfo";
+import User from "./User/User";
 
 class Home extends Component {
   constructor(props) {
@@ -17,15 +19,22 @@ class Home extends Component {
         "Replacing Disposables"
       ],
       pledges: [],
-      pledgeNumber: -1
+      pledgeNumber: -1,
+      // CHANGE THIS TO USE LOCAL JSON FILES
+      local: true
     };
   }
 
   async componentDidMount() {
     let pledgeNumber = this.props.pledgeNumber;
     pledgeNumber = 0;
-    var respPledgeInfo = await fetch(`http://localhost:5000/pledges`);
-    var pledgeInfo = await respPledgeInfo.json();
+    let pledgeInfo;
+    if (this.state.local) {
+      pledgeInfo = PledgeInfo;
+    } else {
+      var respPledgeInfo = await fetch(`http://localhost:5000/pledges`);
+      pledgeInfo = await respPledgeInfo.json();
+    }
     this.setState({ pledgeNumber: pledgeNumber, pledges: pledgeInfo });
   }
 
@@ -64,14 +73,21 @@ class Home extends Component {
     return [0, 1, 2].map((group, index) => {
       if (pledgeNumber !== -1 && pledgeNumber !== index) {
         let gradient;
+        let hoverColor;
         let text = this.state.pledgeText[index];
         if (coolColor) {
           gradient = "cool-gradient";
+          hoverColor = "circle_cool-hover";
           coolColor = !coolColor;
-        } else gradient = "warm-gradient";
+        } else {
+          gradient = "warm-gradient";
+          hoverColor = "circle_warm-hover";
+        }
 
         return (
           <Group
+            local={this.state.local}
+            hoverColor={hoverColor}
             gradient={gradient}
             key={index}
             pledgeNumber={index}
@@ -84,13 +100,19 @@ class Home extends Component {
   };
 
   render() {
+    let { pledgeNumber, pledges } = this.state;
+    let userPledge = {};
+    if (pledgeNumber !== -1) userPledge = pledges[pledgeNumber];
+
     return (
       <div className="home">
         <div className="home__background">
           <img src={Beach} alt="Beach" />
         </div>
         <div className="dashboard">
-          <div className="user">sad</div>
+          <div className="user">
+            <User pledgeInfo={userPledge} pledgeNumber={pledgeNumber} />
+          </div>
           <div className="groups">{this.renderGroups()}</div>
           <Checklist
             setItemStatus={this.setItemStatus}

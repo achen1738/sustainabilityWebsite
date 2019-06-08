@@ -1,0 +1,32 @@
+[
+  {
+    "_id": {
+      "$oid": "5c986e11d0ff891d1fabb40e"
+    },
+    "pledge": "Eat more plant-based meals",
+    "pledgeNumber": 0,
+    "pledgeScore": 36,
+    "members": 23,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5c986e11d0ff891d1fabb40f"
+    },
+    "pledge": "Use more alternative transportation",
+    "pledgeNumber": 1,
+    "pledgeScore": 0,
+    "members": 5,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5c986e11d0ff891d1fabb410"
+    },
+    "pledge": "Replace disposables with reusables",
+    "pledgeNumber": 2,
+    "pledgeScore": 24,
+    "members": 26,
+    "__v": 0
+  }
+]

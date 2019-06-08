@@ -57,9 +57,10 @@ app.get("/users/:pledgeNumber", async function(req, res) {
   const pledgeNumber = parseInt(req.params.pledgeNumber);
   try {
     const resp = await connection.getUsers(pledgeNumber);
+    console.log(resp);
     res.json(resp);
   } catch {
-    res.json([]);
+    res.json([-1, -1, -1]);
   }
 });
 
